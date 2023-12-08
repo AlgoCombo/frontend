@@ -1,6 +1,7 @@
 import React from "react";
 import "./index.css";
 import TradingViewWidget from "@/components/TradingViewWIdget";
+import DragAdder from "@/components/DragAdder";
 
 export default function Trade() {
   return (
@@ -10,7 +11,7 @@ export default function Trade() {
           <TradingViewWidget symbol="NASDAQ:AAPL" />
         </div>
         <div className="drag-drop">
-          <h1>Here comes the drag and drop tool.</h1>
+          <DragAdder />
         </div>
       </div>
     </main>
