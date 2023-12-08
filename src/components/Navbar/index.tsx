@@ -7,7 +7,7 @@ export default function Navbar() {
     <div className="navbar">
       <h1>AlgoCombo</h1>
       <div className="nav-links">
-        <a href="/">Home</a>
+        <a href="/home">Home</a>
         <a href="/trade">Trade</a>
       </div>
       <ConnectWallet />
