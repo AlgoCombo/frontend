@@ -16,7 +16,11 @@ function AddExecutionLayer() {
 
   const layers = [
     {
-      name: "1Inch",
+      name: "fusionswap",
+      icon: "cow",
+    },
+    {
+      name: "uniswap",
       icon: "cow",
     },
   ];

@@ -6,3 +6,12 @@ export async function getHotWalletForUser(data: any) {
     body: JSON.stringify(data),
   });
 }
+
+export async function getWalletBalances(data: any) {
+  const res = await fetch(
+    `https://api.1inch.dev/balance/v1.2/${data.chainId}/balances/${data.address}`
+  );
+  return await res.json();
+}
+
+export async function getTokenAddresses() {}

@@ -38,13 +38,18 @@ function DragAdder() {
     console.log(signature, "SIGNATURE");
   };
 
+  const tokenNameMap: any = {
+    USDT: "tether",
+    USDC: "usd-coin",
+  };
+
   const executeTrade = async (sign: string) => {
     if (!amountRef.current?.value) return;
-    console.log("in execute trade");
+    console.log("in execute trade", currentToken, tokenList);
     const trade: ITrade = {
       trade: {
-        current_coin: currentToken,
-        coin_pairs: tokenList,
+        current_coin: tokenNameMap[currentToken.token0],
+        coin_pairs: [tokenNameMap[tokenList[0]], tokenNameMap[tokenList[1]]],
         amount: parseInt(amountRef.current?.value!),
         algorithm: JSON.stringify({
           name: algorithm,
