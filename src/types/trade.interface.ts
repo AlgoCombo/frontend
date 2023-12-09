@@ -5,6 +5,7 @@ export default interface ITrade {
     amount: number;
     algorithm: string;
     execution_type: string;
+    chain_id: number;
   };
   signature: string;
 }

@@ -9,6 +9,7 @@ import { getAccount, walletClient } from "@/configs/wallet_config";
 import { useTradeStore } from "@/states/trade.state";
 import ITrade from "@/types/trade.interface";
 import { createTrade } from "@/services/trade.service";
+import { useChainId } from "wagmi";
 
 function DragAdder() {
   const amountRef = useRef<HTMLInputElement>(null);
@@ -18,20 +19,28 @@ function DragAdder() {
   const algorithm = useTradeStore((s: any) => s.algorithm);
   const [signature, setSignature] = useState<string>("");
 
+  const chainId = useChainId();
+
   const handleSendSignature = async () => {
     const account = await getAccount();
     console.log(account, "ACCOUNT");
+
+    if (!account) return;
+
+    console.log(chainId, "CHAIN ID");
 
     const signature = await walletClient.signMessage({
       account,
       message: "new trade request",
     });
     setSignature(signature);
+    executeTrade();
     console.log(signature, "SIGNATURE");
   };
 
   const executeTrade = async () => {
     if (!amountRef.current?.value) return;
+    console.log("in execute trade");
     const trade: ITrade = {
       trade: {
         current_coin: currentToken,
@@ -40,10 +49,13 @@ function DragAdder() {
         algorithm: JSON.stringify({
           name: algorithm,
         }),
-        execution_type: executionLayer,
+        execution_type: executionLayer.name,
+        chain_id: chainId,
       },
       signature: "",
     };
+
+    console.log(trade, "TRADE");
     const res = await createTrade(trade);
     console.log(res, "RES");
   };
@@ -75,7 +87,10 @@ function DragAdder() {
           />
         </div>
         <div className="w-full">
-          <button className="w-full h-10 bg-transparent rounded-xl border border-white">
+          <button
+            className="w-full h-10 bg-transparent rounded-xl border border-white"
+            onClick={handleSendSignature}
+          >
             Execute Trade
           </button>
         </div>

@@ -4,7 +4,7 @@ export const useTradeStore = create((set) => ({
   currentToken: null,
   setCurrentToken: (token: any) => set({ currentToken: token }),
   tokenList: [],
-  setTokens: (tokens: any) => set({ tokens: tokens }),
+  setTokens: (tokens: any) => set({ tokenList: tokens }),
   amount: 0,
   setAmount: (amount: number) => set({ amount: amount }),
   executionLayer: null,
