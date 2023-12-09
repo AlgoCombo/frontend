@@ -67,7 +67,8 @@ export default function OrderBook() {
       wallet_address: account,
     });
     console.log(res, "RES");
-    setOrderBook(res.data);
+    if (!res.data) return;
+    setOrderBook(res.data.data);
   };
 
   return (
@@ -84,37 +85,43 @@ export default function OrderBook() {
             </tr>
           </thead>
           <tbody>
-            {orderBook.map((order, index) => {
-              return (
-                <tr key={index}>
-                  <td>
-                    <div className="flex flex-row items-center text-center w-full justify-center uppercase">
-                      <img
-                        src={getIconUrl(
-                          order.earliest.earliestTrade.current_coin
-                        )}
-                        className="w-5 h-5 m-1"
-                      />
-                      {order.earliest.earliestTrade.current_coin} -
-                      <img
-                        src={getIconUrl(
-                          order.earliest.earliestTrade.coin_pairs[1]
-                        )}
-                        className="w-5 h-5 m-1"
-                      />
-                      {order.earliest.earliestTrade.coin_pairs[1]}
-                    </div>
-                  </td>
-                  <td>{order.earliest.earliestTrade.amount}</td>
-                  <td>{order.latest.latestTrade.amount}</td>
-                  <td>
-                    <div className="badge badge-accent badge-outline uppercase">
-                      Active
-                    </div>
-                  </td>
-                </tr>
-              );
-            })}
+            {orderBook.length === 0 ? (
+              <tr>
+                <td colSpan={4}>No active trades</td>
+              </tr>
+            ) : (
+              orderBook.map((order, index) => {
+                return (
+                  <tr key={index}>
+                    <td>
+                      <div className="flex flex-row items-center text-center w-full justify-center uppercase">
+                        <img
+                          src={getIconUrl(
+                            order.earliest.earliestTrade.current_coin
+                          )}
+                          className="w-5 h-5 m-1"
+                        />
+                        {order.earliest.earliestTrade.current_coin} -
+                        <img
+                          src={getIconUrl(
+                            order.earliest.earliestTrade.coin_pairs[1]
+                          )}
+                          className="w-5 h-5 m-1"
+                        />
+                        {order.earliest.earliestTrade.coin_pairs[1]}
+                      </div>
+                    </td>
+                    <td>{order.earliest.earliestTrade.amount}</td>
+                    <td>{order.latest.latestTrade.amount}</td>
+                    <td>
+                      <div className="badge badge-accent badge-outline uppercase">
+                        Active
+                      </div>
+                    </td>
+                  </tr>
+                );
+              })
+            )}
           </tbody>
         </table>
       </div>
