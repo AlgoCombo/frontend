@@ -23,7 +23,7 @@ h1 {
   font-size: 2rem !important;
   font-weight: 700;
   text-transform: capitalize;
-  background: -webkit-linear-gradient(#2e4279, #436dc7);
+  background: -webkit-linear-gradient(#0b40a1 1%, #5687db 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-bottom: 1rem;

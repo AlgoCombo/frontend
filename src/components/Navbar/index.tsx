@@ -36,10 +36,12 @@ export default function Navbar() {
           <div className="mt-4 rounded-xl p-2 overflow-y-auto">
             <div className="vault-card-ui">
               <div className="vault-balance">
+                <div className="balance-label">Balance:</div>
                 <div className="balance-amount">$100.00</div>
               </div>
               <div className="vault-address">
                 <div className="address">0x123...456</div>
+                <div className="brand">at AlgoCombo</div>
               </div>
             </div>
           </div>
