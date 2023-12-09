@@ -34,11 +34,11 @@ function DragAdder() {
       message: "new trade request",
     });
     setSignature(signature);
-    executeTrade();
+    executeTrade(signature);
     console.log(signature, "SIGNATURE");
   };
 
-  const executeTrade = async () => {
+  const executeTrade = async (sign: string) => {
     if (!amountRef.current?.value) return;
     console.log("in execute trade");
     const trade: ITrade = {
@@ -52,7 +52,7 @@ function DragAdder() {
         execution_type: executionLayer.name,
         chain_id: chainId,
       },
-      signature: "",
+      signature: sign,
     };
 
     console.log(trade, "TRADE");
