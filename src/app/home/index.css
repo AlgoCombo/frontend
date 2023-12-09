@@ -7,6 +7,7 @@
   padding-top: 20vh;
   height: 100vh;
   background-color: black;
+  transition: background-color 0.5s ease-in-out;
 }
 
 .home h1 {
@@ -21,8 +22,60 @@
 }
 
 .home h2 {
-  color: white;
   font-size: 2rem;
   margin-bottom: 2rem;
   font-weight: 400;
+}
+
+.start-btn {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 15rem;
+  height: 3rem;
+  border-radius: 5px;
+  background-color: transparent;
+  color: white;
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-transform: capitalize;
+  cursor: pointer;
+  border: 1px solid white;
+}
+
+.start-btn:hover {
+  background-color: #000;
+  color: black;
+}
+
+.dark-mode .home {
+  background-color: #fff;
+}
+
+.dark-mode .home h1 {
+  color: black;
+  font-size: 5rem !important;
+  font-weight: 700;
+  text-transform: capitalize;
+  background: -webkit-linear-gradient(#3c69e5, #d75151);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1rem;
+}
+
+.dark-mode .home h2 {
+  color: #000;
+  transition: color 0.5s ease-in-out;
+}
+
+.dark-mode .start-btn {
+  background-color: transparent;
+  color: black; 
+  border: 1px solid black;
+}
+
+.dark-mode .start-btn:hover {
+  background-color: transparent;
+  color: black;
 }

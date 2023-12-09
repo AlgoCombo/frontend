@@ -1,4 +1,5 @@
 "use client";
+import { useTheme } from "next-themes";
 import React, { useEffect, useRef } from "react";
 
 let tvScriptLoadingPromise: Promise<void> | null;
@@ -11,6 +12,10 @@ export default function TradingViewWidget({
   symbol,
 }: TradingViewWidgetProps): any {
   const onLoadScriptRef = useRef<(() => void) | null>();
+
+  const { theme } = useTheme();
+
+  useEffect(() => {}, [theme]);
 
   useEffect(() => {
     onLoadScriptRef.current = createWidget;
@@ -45,7 +50,7 @@ export default function TradingViewWidget({
           symbol: `${symbol}`,
           interval: "D",
           timezone: "Etc/UTC",
-          theme: "dark",
+          theme: `${theme === "dark" ? "light" : "dark"}`,
           style: "1",
           locale: "en",
           toolbar_bg: "#f1f3f6",
@@ -55,7 +60,7 @@ export default function TradingViewWidget({
         });
       }
     }
-  }, [symbol]);
+  }, [symbol, theme]);
 
   return (
     <div className="tradingview-widget-container h-full w-full">

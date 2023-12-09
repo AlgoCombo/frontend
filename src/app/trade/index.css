@@ -36,3 +36,7 @@
   width: 55%;
   height: 100%;
 }
+
+.dark-mode .trade {
+  background-color: #fff;
+}

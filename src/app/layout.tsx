@@ -19,6 +19,7 @@ import {
 import { Web3Modal } from "@web3modal/react";
 import ConnectWallet from "@/components/ConnectWallet";
 import Navbar from "@/components/Navbar";
+import { ThemeProvider } from "./theme.provider";
 
 const inter = Poppins({
   subsets: ["latin-ext"],
@@ -46,16 +47,18 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <WagmiConfig config={wagmiConfig}>{children}</WagmiConfig>
-        {/* <ConnectWallet /> */}
-        <Navbar />
-        <Web3Modal
-          projectId={projectId}
-          ethereumClient={ethereumClient}
-          themeVariables={{
-            "--w3m-accent-color": "#252525",
-          }}
-        />
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <WagmiConfig config={wagmiConfig}>{children}</WagmiConfig>
+          {/* <ConnectWallet /> */}
+          <Navbar />
+          <Web3Modal
+            projectId={projectId}
+            ethereumClient={ethereumClient}
+            themeVariables={{
+              "--w3m-accent-color": "#252525",
+            }}
+          />
+        </ThemeProvider>
       </body>
     </html>
   );

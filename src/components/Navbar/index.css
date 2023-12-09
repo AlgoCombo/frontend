@@ -16,7 +16,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  width: 15%;
+  width: 22.5%;
 }
 
 .navbar > h1 {
@@ -28,4 +28,25 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-bottom: 1rem;
+}
+
+.nav-links > a {
+  color: white;
+}
+
+/* Dark mode styles */
+
+.dark-mode .navbar > h1 {
+  color: white;
+  font-size: 1.75rem;
+  font-weight: 700;
+  text-transform: capitalize;
+  background: -webkit-linear-gradient(#3c69e5, #d75151);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1rem;
+}
+
+.dark-mode .nav-links > a {
+  color: black;
 }
