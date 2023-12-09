@@ -11,22 +11,20 @@ function AddAlgorithm() {
     <>
       {selected ? (
         <div
-          className="h-40 bg-primary-500 hover:shadow-md hover:shadow-primary-700 cursor-pointer rounded-xl text-white transition flex flex-col justify-between"
+          className="h-40 cursor-pointer rounded-xl text-black border border-zinc-300 transition flex flex-col justify-between"
           onClick={() => modal2.current!.showModal()}
         >
-          <div className="p-5 bg-primary-800 rounded-t-xl flex items-center justify-between">
+          <div className="p-5 rounded-t-xl flex items-center justify-between text-black">
             <h1>{selected.name}</h1>
-            <h1 className="text-primary-400 tracking-widest text-xs">
-              ALGORITHM
-            </h1>
+            <h1 className="text-black tracking-widest text-xs">ALGORITHM</h1>
           </div>
-          <div className="p-5">
+          <div className="p-5 text-black">
             <p className="text-xs">{selected.description}</p>
           </div>
         </div>
       ) : (
         <div
-          className="h-40 bg-primary-500 hover:shadow-md hover:shadow-primary-700 cursor-pointer rounded-xl text-white transition flex flex-col justify-between"
+          className="h-40 cursor-pointer rounded-xl text-black border border-zinc-300 transition flex flex-col justify-between"
           onClick={() => modal2.current!.showModal()}
         >
           <div className="flex justify-end p-5 mt-auto">
@@ -36,13 +34,13 @@ function AddAlgorithm() {
       )}
 
       <dialog ref={modal2} id="my_modal_2" className="modal">
-        <div className="modal-box">
+        <div className="modal-box bg-white text-black">
           <h1 className="text-xl font-black">Select an Algorithm</h1>
           <div className="mt-4 border rounded-xl p-2 overflow-y-auto max-h-[20rem] ">
             {algorithms.map((algo) => (
               <div
                 key={algo.name}
-                className="hover:bg-gray-200 p-3 cursor-pointer transition flex items-center justify-between rounded-lg"
+                className="p-3 cursor-pointer transition flex items-center justify-between rounded-lg"
                 onClick={() => {
                   setSelected(algo);
                   modal2.current.close();

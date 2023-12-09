@@ -64,7 +64,7 @@ export default function TradingViewWidget({
 
   return (
     <div className="tradingview-widget-container h-full w-full">
-      <div id="tradingview_1bf28" className="h-3/4 w-100" />
+      <div id="tradingview_1bf28" className="h-full w-100" />
       {/* <div className="tradingview-widget-copyright">
         <a
           href="https://www.tradingview.com/"

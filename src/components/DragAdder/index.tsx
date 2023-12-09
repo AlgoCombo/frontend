@@ -8,7 +8,7 @@ import AddExecutionLayer from "../Blocks/AddExecutionLayer";
 function DragAdder() {
   return (
     <>
-      <div className="p-5 grid grid-cols-2 overflow-y-auto">
+      <div className="p-5 grid grid-cols-1 overflow-y-auto">
         {/* Left */}
         <div className="space-y-5">
           <AddTokenPair />

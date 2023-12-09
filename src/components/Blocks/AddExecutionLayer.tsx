@@ -18,14 +18,12 @@ function AddExecutionLayer() {
     <>
       {selected ? (
         <div
-          className="h-40 bg-primary-500 hover:shadow-md hover:shadow-primary-700 cursor-pointer rounded-xl text-white transition flex flex-col justify-between"
+          className="h-40 cursor-pointer rounded-xl text-black border border-zinc-300 transition flex flex-col justify-between"
           onClick={() => modal2.current!.showModal()}
         >
-          <div className="p-5 bg-primary-800 rounded-t-xl flex items-center justify-end">
+          <div className="p-5 rounded-t-xl flex items-center justify-end">
             {/* <h1>{selected.name}</h1> */}
-            <h1 className="text-primary-400 tracking-widest text-xs">
-              EXECUTION
-            </h1>
+            <h1 className="text-black tracking-widest text-xs">EXECUTION</h1>
           </div>
           <div className="flex justify-end p-5">
             <p className="text-3xl">{selected.name}</p>
@@ -33,7 +31,7 @@ function AddExecutionLayer() {
         </div>
       ) : (
         <div
-          className="h-40 bg-primary-500 hover:shadow-md hover:shadow-primary-700 cursor-pointer rounded-xl text-white transition flex flex-col justify-between"
+          className="h-40 cursor-pointer rounded-xl text-black border border-zinc-300 transition flex flex-col justify-between"
           onClick={() => modal2.current!.showModal()}
         >
           <div className="flex justify-end p-5 mt-auto">
@@ -43,9 +41,9 @@ function AddExecutionLayer() {
       )}
 
       <dialog ref={modal2} id="my_modal_2" className="modal">
-        <div className="modal-box">
+        <div className="modal-box bg-white text-black">
           <h1 className="text-xl font-black">Select an Execution Layer</h1>
-          <div className="mt-4 border rounded-xl p-2 overflow-y-auto max-h-[20rem] ">
+          <div className="mt-4 border rounded-xl p-2 overflow-y-auto max-h-[20rem] text-black">
             {layers.map((layer) => (
               <div
                 key={layer.name}
@@ -55,10 +53,10 @@ function AddExecutionLayer() {
                   modal2.current.close();
                 }}
               >
-                <div className="flex items-center space-x-2">
-                  {/* <img src={getIconUrl(layer.icon)} className="w-5 h-5" /> */}
-                  <p className="text-primary-500 underline">1</p>
-                  <h1 className="font-bold">{layer.name}</h1>
+                <div className="flex items-center space-x-2 text-black">
+                  {/* <img src={getIconUrl(layer.icon)  } className="w-5 h-5" /> */}
+                  <p className="underline">1</p>
+                  <h1 className="font-bold text-black">{layer.name}</h1>
                 </div>
                 {selected == layer && <CheckIcon className="w-5 h-5" />}
               </div>

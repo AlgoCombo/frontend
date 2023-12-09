@@ -12,25 +12,25 @@ function AddTokenPair() {
     <>
       {selectedPair ? (
         <div
-          className="h-40 bg-primary-500 hover:shadow-md hover:shadow-primary-700 cursor-pointer rounded-xl text-white transition flex flex-col justify-between"
+          className="h-40 cursor-pointer rounded-xl border border-zinc-300 text-black transition flex flex-col justify-between"
           onClick={() => modal1.current!.showModal()}
         >
-          <div className="flex items-center justify-between p-5 bg-primary-800 rounded-t-xl">
-            <div className="flex items-center space-x-1">
+          <div className="flex items-center justify-between p-5 text-black rounded-t-xl border-zinc-800 ">
+            <div className="flex items-center space-x-1 text-black">
               <img src={getIconUrl(selectedPair.token0)} className="w-5 h-5" />
               <span>{selectedPair.token0} -</span>
               <img src={getIconUrl(selectedPair.token1)} className="w-5 h-5" />
               <span>{selectedPair.token1}</span>
             </div>
-            <h1 className="text-primary-400 tracking-widest text-xs">PAIR</h1>
+            <h1 className="text-black-400 tracking-widest text-xs">PAIR</h1>
           </div>
           <div className="flex justify-end p-5">
-            <h2 className="text-4xl font-bold">123.43</h2>
+            <h2 className="text-3xl font-bold text-black">123.43</h2>
           </div>
         </div>
       ) : (
         <div
-          className="h-40 bg-primary-500 hover:shadow-md hover:shadow-primary-700 cursor-pointer rounded-xl text-white transition flex flex-col justify-between"
+          className="h-40 hover:shadow-md border border-zinc-300 cursor-pointer rounded-xl text-black transition flex flex-col justify-between"
           onClick={() => modal1.current!.showModal()}
         >
           <div className="flex justify-end p-5 mt-auto">
@@ -46,13 +46,13 @@ function AddTokenPair() {
       )}
 
       <dialog ref={modal1} id="my_modal_1" className="modal">
-        <div className="modal-box">
+        <div className="modal-box bg-white text-black">
           <h1 className="text-xl font-black">Select a Token Pair</h1>
           <div className="mt-4 border rounded-xl p-2 overflow-y-auto max-h-[20rem] ">
             {tokens.map((token) => (
               <div
                 key={token.token0 + token.token1}
-                className="hover:bg-gray-200 p-3 cursor-pointer transition flex items-center justify-between rounded-lg"
+                className=" p-3 cursor-pointer transition flex items-center justify-between rounded-lg"
                 onClick={() => {
                   setSelectedPair(token);
                   modal1.current.close();

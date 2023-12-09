@@ -6,7 +6,7 @@
   justify-content: flex-start;
   height: 100vh;
   background-color: black;
-  padding-top: 20vh;
+  padding-top: 15vh;
 }
 
 .vertical-sections {
@@ -23,7 +23,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 42.5%;
+  width: 60%;
   height: 100%;
   padding: 25px;
 }
@@ -31,7 +31,7 @@
 .drag-drop {
   display: flex;
   flex-direction: column;
-  width: 55%;
+  width: 40%;
   height: 100%;
 }
 
