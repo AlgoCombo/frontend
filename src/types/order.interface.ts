@@ -14,7 +14,7 @@ export default interface IOrder {
   };
   latest: {
     _id: number;
-    earliestTrade: {
+    latestTrade: {
       _id: string;
       current_coin: string;
       coin_pairs: string[];
