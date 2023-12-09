@@ -53,6 +53,7 @@ function DragAdder() {
         chain_id: chainId,
       },
       signature: sign,
+      message: "create trade request",
     };
 
     console.log(trade, "TRADE");

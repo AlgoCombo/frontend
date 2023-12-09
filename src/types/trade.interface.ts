@@ -8,4 +8,5 @@ export default interface ITrade {
     chain_id: number;
   };
   signature: string;
+  message: string;
 }
