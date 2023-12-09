@@ -25,24 +25,21 @@ function AddExecutionLayer() {
     <>
       {selected ? (
         <div
-          className="h-22.5 cursor-pointer rounded-xl border border-zinc-300 transition flex flex-col justify-between theme-colors"
+          className="h-22.5 cursor-pointer rounded-xl border border-separate border-zinc-600 transition flex flex-col justify-between theme-colors"
           onClick={() => modal2.current!.showModal()}
         >
-          <div className="p-5 rounded-t-xl flex items-center justify-end">
-            {/* <h1>{selected.name}</h1> */}
-            <h1 className="    tracking-widest text-xs">EXECUTION</h1>
-          </div>
-          <div className="flex justify-end py-1 px-5">
-            <p className="text-2xl">{selected.name}</p>
+          <div className="p-5 rounded-t-xl flex items-center justify-between">
+            <h1>{selected.name}</h1>
+            <h1 className="tracking-widest text-xs">EXECUTION</h1>
           </div>
         </div>
       ) : (
         <div
-          className="h-22.5 cursor-pointer rounded-xl border border-zinc-300 transition flex flex-col justify-between"
+          className="h-22.5 cursor-pointer rounded-xl border border-zinc-600 transition flex flex-col justify-between bg-[#1d232a]"
           onClick={() => modal2.current!.showModal()}
         >
           <div className="flex justify-end p-5 mt-auto">
-            <h2 className="text-2xl font-bold">Select Execution Layer</h2>
+            <h2 className="text-lg">Select Execution Layer</h2>
           </div>
         </div>
       )}

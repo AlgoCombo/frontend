@@ -21,11 +21,7 @@ import ConnectWallet from "@/components/ConnectWallet";
 import Navbar from "@/components/Navbar";
 import { ThemeProvider } from "./theme.provider";
 import { useTheme } from "next-themes";
-
-const inter = Poppins({
-  subsets: ["latin-ext"],
-  weight: "400",
-});
+const inter = Inter({ subsets: ["latin"] });
 
 export default function RootLayout({
   children,

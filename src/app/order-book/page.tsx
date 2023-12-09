@@ -63,12 +63,12 @@ export default function OrderBook() {
     <div className="order-book">
       <h1>Order book</h1>
       <div className="w-full px-10 rounded-lg">
-        <table className="table w-full px-10 text-2xl border text-center border-1 border-grey rounded-lg shadow-lg">
+        <table className="table w-full px-10 text-2xl border border-separate text-center border-1 border-slate-600 rounded-lg shadow-lg">
           <thead>
             <tr>
               <th>Assets</th>
-              <th>Amount invested</th>
-              <th>Current Value</th>
+              <th>Amount invested(in $)</th>
+              <th>Current Value(in $)</th>
               <th>Status</th>
             </tr>
           </thead>
@@ -77,7 +77,7 @@ export default function OrderBook() {
               return (
                 <tr key={index}>
                   <td>
-                    <div className="flex flex-row items-center text-center w-full justify-center ">
+                    <div className="flex flex-row items-center text-center w-full justify-center uppercase">
                       <img
                         src={getIconUrl(
                           order.earliest.earliestTrade.current_coin

@@ -14,7 +14,7 @@ export default function Home() {
     <div className="home">
       <div className="hero">
         <div>
-          <h1>ALGOCOMBO</h1>
+          <h1>AlgoCombo</h1>
           <div className="sentence">
             <span>Automate</span>
             <div className="words rotate">

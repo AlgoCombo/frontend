@@ -28,7 +28,7 @@ function AddAlgorithm() {
     <>
       {selected ? (
         <div
-          className="h-25 cursor-pointer rounded-xl border border-zinc-300 transition flex flex-col justify-between theme-colors"
+          className="h-25 cursor-pointer rounded-xl border border-zinc-600 transition flex flex-col justify-between theme-colors"
           onClick={() => modal2.current!.showModal()}
         >
           <div className="p-5 rounded-t-xl flex items-center justify-between">
@@ -41,11 +41,11 @@ function AddAlgorithm() {
         </div>
       ) : (
         <div
-          className="h-25 cursor-pointer rounded-xl border border-zinc-300 transition flex flex-col justify-between"
+          className="h-25 cursor-pointer rounded-xl border border-zinc-600 transition flex flex-col justify-between bg-[#1d232a]"
           onClick={() => modal2.current!.showModal()}
         >
           <div className="flex justify-end p-5 mt-auto">
-            <h2 className="text-3xl font-bold">Select Algorithm</h2>
+            <h2 className="text-lg">Select Algorithm</h2>
           </div>
         </div>
       )}
@@ -54,7 +54,7 @@ function AddAlgorithm() {
         <div
           className={`modal-box ${theme === "dark" ? "bg-white" : "bg-black"}`}
         >
-          <h1 className="text-xl">Select an Algorithm</h1>
+          <h2 className="text-2xl">Select an Algorithm</h2>
           <div className="mt-4 border rounded-xl p-2 overflow-y-auto max-h-[20rem] ">
             {algorithms.map((algo) => (
               <div

@@ -32,10 +32,10 @@ function AddTokenPair() {
     <>
       {selectedPair ? (
         <div
-          className="h-20 cursor-pointer rounded-xl border border-zinc-300 transition flex flex-col justify-between theme-colors"
+          className="h-20 cursor-pointer rounded-xl border border-zinc-600 transition flex flex-col justify-between theme-colors"
           onClick={() => modal1.current!.showModal()}
         >
-          <div className="flex items-center justify-between p-5 rounded-t-xl border-zinc-800">
+          <div className="flex items-center justify-between p-5 rounded-t-xl ">
             <div className="flex items-center space-x-1">
               <img src={getIconUrl(selectedPair.token0)} className="w-5 h-5" />
               <span>{selectedPair.token0} -</span>
@@ -50,11 +50,11 @@ function AddTokenPair() {
         </div>
       ) : (
         <div
-          className="h-20 hover:shadow-md border border-zinc-300 cursor-pointer rounded-xl transition flex flex-col justify-between"
+          className="h-20 hover:shadow-md border border-zinc-600 cursor-pointer rounded-xl transition flex flex-col justify-between bg-[#1d232a]"
           onClick={() => modal1.current!.showModal()}
         >
           <div className="flex justify-end p-5 mt-auto">
-            <h2 className="text-3xl font-bold">Select Pair</h2>
+            <h2 className="text-lg">Select Pair</h2>
           </div>
         </div>
         // <div

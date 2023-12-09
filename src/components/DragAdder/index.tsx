@@ -88,7 +88,7 @@ function DragAdder() {
         </div>
         <div className="w-full">
           <button
-            className="w-full h-10 bg-transparent rounded-xl border border-white"
+            className="w-full h-15 bg-transparent py-3 rounded-xl border border-zinc-600 hover:bg-[#1d232a] hover:text-white transition"
             onClick={handleSendSignature}
           >
             Execute Trade
