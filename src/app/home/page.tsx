@@ -15,7 +15,6 @@ export default function Home() {
       account,
       message: "hello world",
     });
-
     console.log(signature, "SIGNATURE");
   };
 
@@ -26,7 +25,15 @@ export default function Home() {
       <div className="hero">
         <div>
           <h1>ALGOCOMBO</h1>
-          <h2>Automate Money Making</h2>
+          <div className="sentence">
+            <span>Automate</span>
+            <div className="words rotate">
+              <span>Money Making</span>
+              <span>Trades</span>
+              <span>Alerts</span>
+            </div>
+            <br />
+          </div>
           <button
             className="start-btn"
             onClick={() => {
