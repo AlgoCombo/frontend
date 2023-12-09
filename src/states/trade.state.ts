@@ -3,8 +3,12 @@ import { create } from "zustand";
 export const useTradeStore = create((set) => ({
   currentToken: null,
   setCurrentToken: (token: any) => set({ currentToken: token }),
-  tokens: [],
+  tokenList: [],
   setTokens: (tokens: any) => set({ tokens: tokens }),
   amount: 0,
   setAmount: (amount: number) => set({ amount: amount }),
+  executionLayer: null,
+  setExecutionLayer: (layer: any) => set({ executionLayer: layer }),
+  algorithm: null,
+  setAlgorithm: (algorithm: any) => set({ algorithm: algorithm }),
 }));

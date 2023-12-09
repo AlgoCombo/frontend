@@ -3,11 +3,14 @@ import { CheckIcon } from "@heroicons/react/20/solid";
 import { useTheme } from "next-themes";
 import { useRef, useState, useEffect } from "react";
 import "./styles.css";
+import { useTradeStore } from "@/states/trade.state";
 
 function AddAlgorithm() {
   const modal2 = useRef<any>(null);
 
   const [selected, setSelected] = useState<any>(null);
+
+  const setAlgorithm = useTradeStore((s: any) => s.setAlgorithm);
 
   const { theme } = useTheme();
 
@@ -25,7 +28,7 @@ function AddAlgorithm() {
     <>
       {selected ? (
         <div
-          className="h-30 cursor-pointer rounded-xl border border-zinc-300 transition flex flex-col justify-between theme-colors"
+          className="h-25 cursor-pointer rounded-xl border border-zinc-300 transition flex flex-col justify-between theme-colors"
           onClick={() => modal2.current!.showModal()}
         >
           <div className="p-5 rounded-t-xl flex items-center justify-between">
@@ -38,7 +41,7 @@ function AddAlgorithm() {
         </div>
       ) : (
         <div
-          className="h-30 cursor-pointer rounded-xl border border-zinc-300 transition flex flex-col justify-between"
+          className="h-25 cursor-pointer rounded-xl border border-zinc-300 transition flex flex-col justify-between"
           onClick={() => modal2.current!.showModal()}
         >
           <div className="flex justify-end p-5 mt-auto">
@@ -59,6 +62,7 @@ function AddAlgorithm() {
                 className="p-3 cursor-pointer transition flex items-center justify-between rounded-lg"
                 onClick={() => {
                   setSelected(algo);
+                  setAlgorithm(algo.name);
                   modal2.current.close();
                 }}
               >

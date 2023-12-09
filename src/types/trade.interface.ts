@@ -3,6 +3,8 @@ export default interface ITrade {
     current_coin: string;
     coin_pairs: string[];
     amount: number;
+    algorithm: string;
+    execution_type: string;
   };
   signature: string;
 }

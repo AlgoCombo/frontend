@@ -1,4 +1,5 @@
 import tokens from "@/constants/tokens";
+import { useTradeStore } from "@/states/trade.state";
 import { getIconUrl } from "@/utils";
 import { CheckIcon } from "@heroicons/react/20/solid";
 import { useTheme } from "next-themes";
@@ -8,6 +9,12 @@ function AddTokenPair() {
   const modal1 = useRef<any>(null);
 
   const [selectedPair, setSelectedPair] = useState<any>(null);
+
+  const currentToken = useTradeStore((s: any) => s.currentToken);
+  const setCurrentToken = useTradeStore((s: any) => s.setCurrentToken);
+
+  const tokenList = useTradeStore((s: any) => s.tokenList);
+  const setTokens = useTradeStore((s: any) => s.setTokens);
 
   const { theme } = useTheme();
 
@@ -25,7 +32,7 @@ function AddTokenPair() {
     <>
       {selectedPair ? (
         <div
-          className="h-30 cursor-pointer rounded-xl border border-zinc-300 transition flex flex-col justify-between theme-colors"
+          className="h-20 cursor-pointer rounded-xl border border-zinc-300 transition flex flex-col justify-between theme-colors"
           onClick={() => modal1.current!.showModal()}
         >
           <div className="flex items-center justify-between p-5 rounded-t-xl border-zinc-800">
@@ -37,13 +44,13 @@ function AddTokenPair() {
             </div>
             <h1 className="tracking-widest text-xs">PAIR</h1>
           </div>
-          <div className="flex justify-end p-5">
-            <h2 className="text-3xl font-bold">123.43</h2>
-          </div>
+          {/* <div className="flex justify-end p-2">
+            <h2 className="text-xl font-bold">123.43</h2>
+          </div> */}
         </div>
       ) : (
         <div
-          className="h-30 hover:shadow-md border border-zinc-300 cursor-pointer rounded-xl transition flex flex-col justify-between"
+          className="h-20 hover:shadow-md border border-zinc-300 cursor-pointer rounded-xl transition flex flex-col justify-between"
           onClick={() => modal1.current!.showModal()}
         >
           <div className="flex justify-end p-5 mt-auto">
@@ -70,6 +77,8 @@ function AddTokenPair() {
                 className=" p-3 cursor-pointer transition flex items-center justify-between rounded-lg"
                 onClick={() => {
                   setSelectedPair(token);
+                  setCurrentToken(token);
+                  setTokens([...tokenList, token.token0, token.token1]);
                   modal1.current.close();
                 }}
               >

@@ -8,16 +8,6 @@ import { getAccount, walletClient } from "@/configs/wallet_config";
 import { useRouter } from "next/navigation";
 
 export default function Home() {
-  const handleSendSignature = async () => {
-    const account = await getAccount();
-    console.log(account, "ACCOUNT");
-    const signature = await walletClient.signMessage({
-      account,
-      message: "hello world",
-    });
-    console.log(signature, "SIGNATURE");
-  };
-
   const router = useRouter();
 
   return (

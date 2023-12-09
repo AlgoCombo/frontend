@@ -3,11 +3,14 @@ import { CheckIcon } from "@heroicons/react/20/solid";
 import { useTheme } from "next-themes";
 import { useEffect, useRef, useState } from "react";
 import "./styles.css";
+import { useTradeStore } from "@/states/trade.state";
 
 function AddExecutionLayer() {
   const modal2 = useRef<any>(null);
 
   const [selected, setSelected] = useState<any>(null);
+
+  const setExecutionLayer = useTradeStore((s: any) => s.setExecutionLayer);
 
   const { theme } = useTheme();
 
@@ -22,20 +25,20 @@ function AddExecutionLayer() {
     <>
       {selected ? (
         <div
-          className="h-30 cursor-pointer rounded-xl border border-zinc-300 transition flex flex-col justify-between theme-colors"
+          className="h-22.5 cursor-pointer rounded-xl border border-zinc-300 transition flex flex-col justify-between theme-colors"
           onClick={() => modal2.current!.showModal()}
         >
           <div className="p-5 rounded-t-xl flex items-center justify-end">
             {/* <h1>{selected.name}</h1> */}
             <h1 className="    tracking-widest text-xs">EXECUTION</h1>
           </div>
-          <div className="flex justify-end p-5">
-            <p className="text-3xl">{selected.name}</p>
+          <div className="flex justify-end py-1 px-5">
+            <p className="text-2xl">{selected.name}</p>
           </div>
         </div>
       ) : (
         <div
-          className="h-30 cursor-pointer rounded-xl border border-zinc-300 transition flex flex-col justify-between"
+          className="h-22.5 cursor-pointer rounded-xl border border-zinc-300 transition flex flex-col justify-between"
           onClick={() => modal2.current!.showModal()}
         >
           <div className="flex justify-end p-5 mt-auto">
@@ -56,6 +59,7 @@ function AddExecutionLayer() {
                 className="p-3 cursor-pointer transition flex items-center justify-between rounded-lg"
                 onClick={() => {
                   setSelected(layer);
+                  setExecutionLayer(layer);
                   modal2.current.close();
                 }}
               >
