@@ -1,36 +1,49 @@
 import tokens from "@/constants/tokens";
 import { getIconUrl } from "@/utils";
 import { CheckIcon } from "@heroicons/react/20/solid";
-import { useRef, useState } from "react";
+import { useTheme } from "next-themes";
+import { useEffect, useRef, useState } from "react";
 
 function AddTokenPair() {
   const modal1 = useRef<any>(null);
 
   const [selectedPair, setSelectedPair] = useState<any>(null);
 
+  const { theme } = useTheme();
+
+  useEffect(() => {
+    if (theme === "dark") {
+      document.body.classList.add("dark-mode");
+      document.body.classList.remove("theme-colors");
+    } else {
+      document.body.classList.remove("dark-mode");
+      document.body.classList.add("theme-colors");
+    }
+  }, [theme]);
+
   return (
     <>
       {selectedPair ? (
         <div
-          className="h-40 cursor-pointer rounded-xl border border-zinc-300 text-black transition flex flex-col justify-between"
+          className="h-40 cursor-pointer rounded-xl border border-zinc-300 transition flex flex-col justify-between theme-colors"
           onClick={() => modal1.current!.showModal()}
         >
-          <div className="flex items-center justify-between p-5 text-black rounded-t-xl border-zinc-800 ">
-            <div className="flex items-center space-x-1 text-black">
+          <div className="flex items-center justify-between p-5 rounded-t-xl border-zinc-800">
+            <div className="flex items-center space-x-1">
               <img src={getIconUrl(selectedPair.token0)} className="w-5 h-5" />
               <span>{selectedPair.token0} -</span>
               <img src={getIconUrl(selectedPair.token1)} className="w-5 h-5" />
               <span>{selectedPair.token1}</span>
             </div>
-            <h1 className="text-black-400 tracking-widest text-xs">PAIR</h1>
+            <h1 className="tracking-widest text-xs">PAIR</h1>
           </div>
           <div className="flex justify-end p-5">
-            <h2 className="text-3xl font-bold text-black">123.43</h2>
+            <h2 className="text-3xl font-bold">123.43</h2>
           </div>
         </div>
       ) : (
         <div
-          className="h-40 hover:shadow-md border border-zinc-300 cursor-pointer rounded-xl text-black transition flex flex-col justify-between"
+          className="h-40 hover:shadow-md border border-zinc-300 cursor-pointer rounded-xl transition flex flex-col justify-between"
           onClick={() => modal1.current!.showModal()}
         >
           <div className="flex justify-end p-5 mt-auto">
@@ -46,8 +59,10 @@ function AddTokenPair() {
       )}
 
       <dialog ref={modal1} id="my_modal_1" className="modal">
-        <div className="modal-box bg-white text-black">
-          <h1 className="text-xl font-black">Select a Token Pair</h1>
+        <div
+          className={`modal-box ${theme === "dark" ? "bg-white" : "bg-black"}`}
+        >
+          <h1 className="text-xl">Select a Token Pair</h1>
           <div className="mt-4 border rounded-xl p-2 overflow-y-auto max-h-[20rem] ">
             {tokens.map((token) => (
               <div

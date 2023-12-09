@@ -44,10 +44,10 @@
   border: 1px solid white;
 }
 
-.start-btn:hover {
+/* .start-btn:hover {
   background-color: #000;
   color: black;
-}
+} */
 
 .dark-mode .home {
   background-color: #fff;
@@ -75,7 +75,7 @@
   border: 1px solid black;
 }
 
-.dark-mode .start-btn:hover {
+/* .dark-mode .start-btn:hover {
   background-color: transparent;
-  color: black;
-}
+  color: white !important;
+} */

@@ -2,7 +2,7 @@
 import type { Metadata } from "next";
 import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
-import React from "react";
+import React, { useEffect } from "react";
 import { configureChains, createConfig, WagmiConfig } from "wagmi";
 import {
   arbitrum,
@@ -20,6 +20,7 @@ import { Web3Modal } from "@web3modal/react";
 import ConnectWallet from "@/components/ConnectWallet";
 import Navbar from "@/components/Navbar";
 import { ThemeProvider } from "./theme.provider";
+import { useTheme } from "next-themes";
 
 const inter = Poppins({
   subsets: ["latin-ext"],
@@ -43,6 +44,18 @@ export default function RootLayout({
     publicClient,
   });
   const ethereumClient = new EthereumClient(wagmiConfig, chains);
+
+  const { theme } = useTheme();
+
+  useEffect(() => {
+    if (theme === "dark") {
+      document.body.classList.add("dark-mode");
+      document.body.classList.remove("theme-options");
+    } else {
+      document.body.classList.remove("dark-mode");
+      document.body.classList.add("theme-options");
+    }
+  }, [theme]);
 
   return (
     <html lang="en">

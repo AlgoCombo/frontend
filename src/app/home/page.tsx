@@ -6,15 +6,15 @@ import ConnectWallet from "@/components/ConnectWallet";
 import { useTheme } from "next-themes";
 
 export default function Home() {
-  const { theme } = useTheme();
+  // const { theme } = useTheme();
 
-  React.useEffect(() => {
-    if (theme === "dark") {
-      document.body.classList.add("dark-mode");
-    } else {
-      document.body.classList.remove("dark-mode");
-    }
-  }, [theme]);
+  // React.useEffect(() => {
+  //   if (theme === "dark") {
+  //     document.body.classList.add("dark-mode");
+  //   } else {
+  //     document.body.classList.remove("dark-mode");
+  //   }
+  // }, [theme]);
 
   return (
     <div className="home">
