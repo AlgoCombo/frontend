@@ -3,7 +3,12 @@ import type { Metadata } from "next";
 import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
 import React, { useEffect } from "react";
-import { configureChains, createConfig, WagmiConfig } from "wagmi";
+import {
+  configureChains,
+  createConfig,
+  useWalletClient,
+  WagmiConfig,
+} from "wagmi";
 import {
   arbitrum,
   mainnet,

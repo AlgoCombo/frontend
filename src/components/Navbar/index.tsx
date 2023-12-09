@@ -1,13 +1,20 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import "./index.css";
 import ConnectWallet from "../ConnectWallet";
 import { ThemeSwitcher } from "../ThemeSwitcher";
 import { useTheme } from "next-themes";
+import { getHotWalletForUser } from "@/services/wallet.service";
+import { useAccount, useWalletClient } from "wagmi";
+import { useWalletStore } from "@/states/wallet.state";
+import { getAccount } from "@/configs/wallet_config";
 
 export default function Navbar() {
   const { theme } = useTheme();
 
+  const wAddress = useWalletStore((state: any) => state.address);
+
   React.useEffect(() => {
+    handleFetchHotWalletData();
     if (theme === "dark") {
       document.body.classList.add("dark-mode");
     } else {
@@ -16,6 +23,19 @@ export default function Navbar() {
   }, [theme]);
 
   const modal2 = useRef<any>(null);
+
+  const handleFetchHotWalletData = async () => {
+    const addr = await getAccount();
+    if (!addr) {
+      alert("Please connect your wallet");
+      return;
+    }
+    console.log("address", addr);
+    const res = await getHotWalletForUser({
+      wallet_address: wAddress,
+    });
+    console.log("res from hot wallet fetch", res);
+  };
 
   return (
     <div className="navbar">
