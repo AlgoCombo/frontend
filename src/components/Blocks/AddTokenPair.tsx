@@ -1,6 +1,6 @@
 import tokens from "@/constants/tokens";
 import { getIconUrl } from "@/utils";
-import { CheckIcon, PlusIcon } from "@heroicons/react/20/solid";
+import { CheckIcon } from "@heroicons/react/20/solid";
 import { useRef, useState } from "react";
 
 function AddTokenPair() {
