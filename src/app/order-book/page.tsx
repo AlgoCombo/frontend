@@ -1,48 +1,20 @@
 "use client";
-import React from "react";
+import React, { use, useEffect, useState } from "react";
 import "./index.css";
+import IOrder from "@/types/order.interface";
 
 export default function OrderBook() {
+  const [orderBook, setOrderBook] = useState<IOrder[]>([]);
+
+  useEffect(() => {
+    handleFetchOrderBook();
+  }, []);
+
+  const handleFetchOrderBook = async () => {};
+
   return (
     <div className="order-book">
-      <div className="table-container">
-        <div className="overflow-x-auto">
-          <table className="table-lg">
-            {/* head */}
-            <thead>
-              <tr onClick={() => {}}>
-                <th></th>
-                <th>Name</th>
-                <th>Job</th>
-                <th>Favorite Color</th>
-              </tr>
-            </thead>
-            <tbody>
-              {/* row 1 */}
-              <tr>
-                <th>1</th>
-                <td>Cy Ganderton</td>
-                <td>Quality Control Specialist</td>
-                <td>Blue</td>
-              </tr>
-              {/* row 2 */}
-              <tr>
-                <th>2</th>
-                <td>Hart Hagerty</td>
-                <td>Desktop Support Technician</td>
-                <td>Purple</td>
-              </tr>
-              {/* row 3 */}
-              <tr>
-                <th>3</th>
-                <td>Brice Swyre</td>
-                <td>Tax Accountant</td>
-                <td>Red</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
+      <div className="order-book-list"></div>
     </div>
   );
 }
