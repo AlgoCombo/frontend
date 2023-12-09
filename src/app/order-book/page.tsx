@@ -3,6 +3,8 @@ import React, { use, useEffect, useState } from "react";
 import "./index.css";
 import IOrder from "@/types/order.interface";
 import { getIconUrl } from "@/utils";
+import { getActiveTrades } from "@/services/trade.service";
+import { getAccount } from "@/configs/wallet_config";
 
 export default function OrderBook() {
   const [orderBook, setOrderBook] = useState<IOrder[]>([]);
@@ -11,53 +13,62 @@ export default function OrderBook() {
 
   useEffect(() => {
     handleFetchOrderBook();
-    setOrderBook([
-      {
-        earliest: {
-          _id: 1,
-          earliestTrade: {
-            _id: "657448744c993d038ff91d74",
-            current_coin: "aave",
-            coin_pairs: ["aave", "tether"],
-            amount: 10,
-            isActive: true,
-            creator: {
-              wallet_address: "0x7CC6E56d37eA31A31d0d59E41728bb034203C6DB",
-              hot_wallet_public_key: "0xpublic2",
-              hot_wallet_private_key: "0xprivate2",
-              createdAt: "2023-12-09T10:19:56.802Z",
-              _id: "65743f4cdabeefc22539f288",
-              __v: 0,
-            },
-            createdAt: "2023-12-09T10:59:00.790Z",
-            trade_id: 1,
-          },
-        },
-        latest: {
-          _id: 1,
-          latestTrade: {
-            _id: "6574490fa92f39b6d041a839",
-            trade_id: 1,
-            current_coin: "tether",
-            coin_pairs: ["aave", "tether"],
-            amount: 10,
-            isActive: true,
-            creator: {
-              wallet_address: "0x7CC6E56d37eA31A31d0d59E41728bb034203C6DB",
-              hot_wallet_public_key: "0xpublic2",
-              hot_wallet_private_key: "0xprivate2",
-              createdAt: "2023-12-09T10:19:56.802Z",
-              _id: "65743f4cdabeefc22539f288",
-              __v: 0,
-            },
-            createdAt: "2023-12-09T11:01:35.178Z",
-          },
-        },
-      },
-    ]);
+    // setOrderBook([
+    //   {
+    //     earliest: {
+    //       _id: 1,
+    //       earliestTrade: {
+    //         _id: "657448744c993d038ff91d74",
+    //         current_coin: "aave",
+    //         coin_pairs: ["aave", "tether"],
+    //         amount: 10,
+    //         isActive: true,
+    //         creator: {
+    //           wallet_address: "0x7CC6E56d37eA31A31d0d59E41728bb034203C6DB",
+    //           hot_wallet_public_key: "0xpublic2",
+    //           hot_wallet_private_key: "0xprivate2",
+    //           createdAt: "2023-12-09T10:19:56.802Z",
+    //           _id: "65743f4cdabeefc22539f288",
+    //           __v: 0,
+    //         },
+    //         createdAt: "2023-12-09T10:59:00.790Z",
+    //         trade_id: 1,
+    //       },
+    //     },
+    //     latest: {
+    //       _id: 1,
+    //       latestTrade: {
+    //         _id: "6574490fa92f39b6d041a839",
+    //         trade_id: 1,
+    //         current_coin: "tether",
+    //         coin_pairs: ["aave", "tether"],
+    //         amount: 10,
+    //         isActive: true,
+    //         creator: {
+    //           wallet_address: "0x7CC6E56d37eA31A31d0d59E41728bb034203C6DB",
+    //           hot_wallet_public_key: "0xpublic2",
+    //           hot_wallet_private_key: "0xprivate2",
+    //           createdAt: "2023-12-09T10:19:56.802Z",
+    //           _id: "65743f4cdabeefc22539f288",
+    //           __v: 0,
+    //         },
+    //         createdAt: "2023-12-09T11:01:35.178Z",
+    //       },
+    //     },
+    //   },
+    // ]);
   }, []);
 
-  const handleFetchOrderBook = async () => {};
+  const handleFetchOrderBook = async () => {
+    const account = await getAccount();
+    console.log(account, "ACCOUNT");
+    if (!account) return;
+    const res = await getActiveTrades({
+      wallet_address: account,
+    });
+    console.log(res, "RES");
+    setOrderBook(res.data);
+  };
 
   return (
     <div className="order-book">
