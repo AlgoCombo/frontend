@@ -25,7 +25,7 @@ function AddTokenPair() {
     <>
       {selectedPair ? (
         <div
-          className="h-40 cursor-pointer rounded-xl border border-zinc-300 transition flex flex-col justify-between theme-colors"
+          className="h-30 cursor-pointer rounded-xl border border-zinc-300 transition flex flex-col justify-between theme-colors"
           onClick={() => modal1.current!.showModal()}
         >
           <div className="flex items-center justify-between p-5 rounded-t-xl border-zinc-800">
@@ -43,7 +43,7 @@ function AddTokenPair() {
         </div>
       ) : (
         <div
-          className="h-40 hover:shadow-md border border-zinc-300 cursor-pointer rounded-xl transition flex flex-col justify-between"
+          className="h-30 hover:shadow-md border border-zinc-300 cursor-pointer rounded-xl transition flex flex-col justify-between"
           onClick={() => modal1.current!.showModal()}
         >
           <div className="flex justify-end p-5 mt-auto">

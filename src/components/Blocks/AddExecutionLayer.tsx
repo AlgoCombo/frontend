@@ -22,7 +22,7 @@ function AddExecutionLayer() {
     <>
       {selected ? (
         <div
-          className="h-40 cursor-pointer rounded-xl border border-zinc-300 transition flex flex-col justify-between theme-colors"
+          className="h-30 cursor-pointer rounded-xl border border-zinc-300 transition flex flex-col justify-between theme-colors"
           onClick={() => modal2.current!.showModal()}
         >
           <div className="p-5 rounded-t-xl flex items-center justify-end">
@@ -35,7 +35,7 @@ function AddExecutionLayer() {
         </div>
       ) : (
         <div
-          className="h-40 cursor-pointer rounded-xl border border-zinc-300 transition flex flex-col justify-between"
+          className="h-30 cursor-pointer rounded-xl border border-zinc-300 transition flex flex-col justify-between"
           onClick={() => modal2.current!.showModal()}
         >
           <div className="flex justify-end p-5 mt-auto">

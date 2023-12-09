@@ -43,6 +43,7 @@ export default function Home() {
           >
             Start Trading
           </button>
+          <h2>Your trade, our strategies.</h2>
         </div>
         <img
           src="/assets/trading.png"

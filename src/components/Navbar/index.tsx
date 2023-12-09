@@ -22,9 +22,10 @@ export default function Navbar() {
         <a href="/home">Home</a>
         <a href="/trade">Trade</a>
         <a href="/order-book">Order book</a>
+        <a href="/order-book">Vault</a>
       </div>
       <ConnectWallet />
-      <ThemeSwitcher />
+      {/* <ThemeSwitcher /> */}
     </div>
   );
 }
