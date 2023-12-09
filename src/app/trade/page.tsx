@@ -3,6 +3,7 @@ import React from "react";
 import "./index.css";
 import TradingViewWidget from "@/components/TradingViewWIdget";
 import { useTheme } from "next-themes";
+import DragAdder from "@/components/DragAdder";
 
 export default function Trade() {
   const { theme } = useTheme();
@@ -21,7 +22,9 @@ export default function Trade() {
         <div className="tv-graph">
           <TradingViewWidget symbol="NASDAQ:AAPL" />
         </div>
-        <div className="drag-drop"></div>
+        <div className="drag-drop">
+          <DragAdder />
+        </div>
       </div>
     </main>
   );
