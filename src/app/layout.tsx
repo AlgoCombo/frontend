@@ -68,7 +68,7 @@ export default function RootLayout({
             projectId={projectId}
             ethereumClient={ethereumClient}
             themeVariables={{
-              "--w3m-accent-color": "#252525",
+              "--w3m-accent-color": "#3c5998",
             }}
           />
         </ThemeProvider>

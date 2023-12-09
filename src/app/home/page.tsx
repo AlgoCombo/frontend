@@ -4,25 +4,50 @@ import "./index.css";
 import { Web3Button, Web3Modal } from "@web3modal/react";
 import ConnectWallet from "@/components/ConnectWallet";
 import { useTheme } from "next-themes";
+import { getAccount, walletClient } from "@/configs/wallet_config";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
-  // const { theme } = useTheme();
+  const handleSendSignature = async () => {
+    const account = await getAccount();
+    console.log(account, "ACCOUNT");
+    const signature = await walletClient.signMessage({
+      account,
+      message: "hello world",
+    });
 
-  // React.useEffect(() => {
-  //   if (theme === "dark") {
-  //     document.body.classList.add("dark-mode");
-  //   } else {
-  //     document.body.classList.remove("dark-mode");
-  //   }
-  // }, [theme]);
+    console.log(signature, "SIGNATURE");
+  };
+
+  const router = useRouter();
 
   return (
     <div className="home">
-      <h1>ALGOCOMBO</h1>
-      <h2>Automate Money Making</h2>
-      <button className="start-btn" onClick={() => {}}>
-        Start Trading
-      </button>
+      <div className="hero">
+        <div>
+          <h1>ALGOCOMBO</h1>
+          <h2>Automate Money Making</h2>
+          <button
+            className="start-btn"
+            onClick={() => {
+              // handleSendSignature();
+              router.push("/trade");
+            }}
+          >
+            Start Trading
+          </button>
+        </div>
+        <img
+          src="/assets/trading.png"
+          alt="hero"
+          style={{
+            width: "100%",
+            maxWidth: "650px",
+            height: "auto",
+            // marginTop: "50px",
+          }}
+        />
+      </div>
     </div>
   );
 }
