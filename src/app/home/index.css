@@ -15,7 +15,7 @@
   font-size: 5rem !important;
   font-weight: 700;
   text-transform: capitalize;
-  background: -webkit-linear-gradient(#2e4279, #3c5998);
+  background: -webkit-linear-gradient(#2e4279, #436dc7);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-bottom: 1rem;
@@ -91,11 +91,16 @@
   font-size: 1em;
 }
 .sentence span {
-  color: #2e4279;
+  color: #fff;
   font-size: 2em;
   font-weight: 300;
   margin-bottom: 30px;
 }
+
+.dark-mode .sentence span {
+  color: #000;
+}
+
 .words {
   display: inline;
   text-indent: 10px;
@@ -112,15 +117,29 @@
   animation: rotateWord 7s linear infinite;
 }
 .words span:nth-child(1) {
-  color: #2e4279;
+  font-weight: 700;
+  text-transform: capitalize;
+  background: -webkit-linear-gradient(#2e4279, #436dc7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 .words span:nth-child(2) {
-  color: #2e4279;
+  font-weight: 700;
+  text-transform: capitalize;
+  background: -webkit-linear-gradient(#2e4279, #436dc7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1rem;
   -webkit-animation-delay: 3s;
   animation-delay: 3s;
 }
 .words span:nth-child(3) {
-  color: #2e4279;
+  font-weight: 700;
+  text-transform: capitalize;
+  background: -webkit-linear-gradient(#2e4279, #436dc7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1rem;
   -webkit-animation-delay: 5s;
   animation-delay: 5s;
 }
