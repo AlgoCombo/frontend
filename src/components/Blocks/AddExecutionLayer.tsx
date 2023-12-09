@@ -37,7 +37,7 @@ function AddExecutionLayer() {
           onClick={() => modal2.current!.showModal()}
         >
           <div className="flex justify-end p-5 mt-auto">
-            <h2 className="text-3xl font-bold">Select Execution Layer</h2>
+            <h2 className="text-2xl font-bold">Select Execution Layer</h2>
           </div>
         </div>
       )}
