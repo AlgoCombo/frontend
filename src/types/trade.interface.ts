@@ -8,5 +8,6 @@ export default interface ITrade {
     chain_id: number;
   };
   signature: string;
+  wallet_address: string;
   message: string;
 }
