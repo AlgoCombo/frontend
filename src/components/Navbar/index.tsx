@@ -95,7 +95,9 @@ export default function Navbar() {
                 <h2>
                   To top up your vault, deposit the tokens to the below address.
                 </h2>
-                <div className="deposit-address-chip">{"0x123456789"}</div>
+                <div className="deposit-address-chip">
+                  {"0x9c0e4d20e2201c6396f32ecac7ce39b4dbccc878"}
+                </div>
                 <h2>
                   You can proceed with the trades once the deposit is complete
                 </h2>
