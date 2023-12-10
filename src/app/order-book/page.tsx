@@ -11,61 +11,61 @@ export default function OrderBook() {
   const [orderBook, setOrderBook] = useState<IOrder[]>([]);
   const { data: walletClient } = useWalletClient();
 
-  useEffect(() => {
-    if (!walletClient) return;
-    const interval = setInterval(() => {
-      handleFetchOrderBook();
-    }, 10000);
-    return () => clearInterval(interval);
-  }, [orderBook, walletClient]);
+  // useEffect(() => {
+  //   if (!walletClient) return;
+  //   const interval = setInterval(() => {
+  //     handleFetchOrderBook();
+  //   }, 10000);
+  //   return () => clearInterval(interval);
+  // }, [orderBook, walletClient]);
 
   useEffect(() => {
-    if (!walletClient) return;
-    handleFetchOrderBook();
-    // setOrderBook([
-    //   {
-    //     earliest: {
-    //       _id: 1,
-    //       earliestTrade: {
-    //         _id: "657448744c993d038ff91d74",
-    //         current_coin: "aave",
-    //         coin_pairs: ["aave", "tether"],
-    //         amount: 10,
-    //         isActive: true,
-    //         creator: {
-    //           wallet_address: "0x7CC6E56d37eA31A31d0d59E41728bb034203C6DB",
-    //           hot_wallet_public_key: "0xpublic2",
-    //           hot_wallet_private_key: "0xprivate2",
-    //           createdAt: "2023-12-09T10:19:56.802Z",
-    //           _id: "65743f4cdabeefc22539f288",
-    //           __v: 0,
-    //         },
-    //         createdAt: "2023-12-09T10:59:00.790Z",
-    //         trade_id: 1,
-    //       },
-    //     },
-    //     latest: {
-    //       _id: 1,
-    //       latestTrade: {
-    //         _id: "6574490fa92f39b6d041a839",
-    //         trade_id: 1,
-    //         current_coin: "tether",
-    //         coin_pairs: ["aave", "tether"],
-    //         amount: 10,
-    //         isActive: true,
-    //         creator: {
-    //           wallet_address: "0x7CC6E56d37eA31A31d0d59E41728bb034203C6DB",
-    //           hot_wallet_public_key: "0xpublic2",
-    //           hot_wallet_private_key: "0xprivate2",
-    //           createdAt: "2023-12-09T10:19:56.802Z",
-    //           _id: "65743f4cdabeefc22539f288",
-    //           __v: 0,
-    //         },
-    //         createdAt: "2023-12-09T11:01:35.178Z",
-    //       },
-    //     },
-    //   },
-    // ]);
+    // if (!walletClient) return;
+    // handleFetchOrderBook();
+    setOrderBook([
+      {
+        earliest: {
+          _id: 1,
+          earliestTrade: {
+            _id: "657448744c993d038ff91d74",
+            current_coin: "usdt",
+            coin_pairs: ["usdt", "usdc"],
+            amount: 10,
+            isActive: true,
+            creator: {
+              wallet_address: "0x7CC6E56d37eA31A31d0d59E41728bb034203C6DB",
+              hot_wallet_public_key: "0xpublic2",
+              hot_wallet_private_key: "0xprivate2",
+              createdAt: "2023-12-09T10:19:56.802Z",
+              _id: "65743f4cdabeefc22539f288",
+              __v: 0,
+            },
+            createdAt: "2023-12-09T10:59:00.790Z",
+            trade_id: 1,
+          },
+        },
+        latest: {
+          _id: 1,
+          latestTrade: {
+            _id: "6574490fa92f39b6d041a839",
+            trade_id: 1,
+            current_coin: "usdt",
+            coin_pairs: ["usdt", "usdc"],
+            amount: 10,
+            isActive: true,
+            creator: {
+              wallet_address: "0x7CC6E56d37eA31A31d0d59E41728bb034203C6DB",
+              hot_wallet_public_key: "0xpublic2",
+              hot_wallet_private_key: "0xprivate2",
+              createdAt: "2023-12-09T10:19:56.802Z",
+              _id: "65743f4cdabeefc22539f288",
+              __v: 0,
+            },
+            createdAt: "2023-12-09T11:01:35.178Z",
+          },
+        },
+      },
+    ]);
   }, []);
 
   const handleFetchOrderBook = async () => {
