@@ -10,11 +10,15 @@ import {
 import { useAccount, useChainId, useWalletClient } from "wagmi";
 import { useWalletStore } from "@/states/wallet.state";
 import { getAccount } from "@/configs/wallet_config";
+import { useRouter } from "next/navigation";
 
 export default function Navbar() {
   const { theme } = useTheme();
 
   const wAddress = useWalletStore((state: any) => state.address);
+  const [depositOpen, setDepositOpen] = React.useState(false);
+  const [hotAddress, setHotAddress] = React.useState("");
+  const router = useRouter();
 
   React.useEffect(() => {
     if (theme === "dark") {
@@ -46,9 +50,14 @@ export default function Navbar() {
     const res = await getHotWalletForUser({
       wallet_address: wAddress,
     });
+    if (res.data) {
+      setHotAddress(res.data.hot_wallet_address);
+    }
     handleFetchWalletBalances(wAddress);
     console.log("res from hot wallet fetch", res);
   };
+
+  const handleSendFundsToHotWallet = async () => {};
 
   const handleFetchWalletBalances = async (addr: string) => {
     const chainId = useChainId();
@@ -57,6 +66,11 @@ export default function Navbar() {
       wallet_address: addr,
     });
     console.log("res from 1 inch", res);
+  };
+
+  const handleClose = () => {
+    setDepositOpen(false);
+    modal2.current!.close();
   };
 
   return (
@@ -76,15 +90,37 @@ export default function Navbar() {
           className={`modal-box ${theme === "dark" ? "bg-white" : "bg-black"}`}
         >
           <div className="mt-4 rounded-xl p-2 overflow-y-auto">
-            <div className="vault-card-ui">
-              <div className="vault-balance">
-                <div className="balance-label">Balance:</div>
-                <div className="balance-amount">$100.00</div>
+            {depositOpen ? (
+              <div className="deposit-ui">
+                <h2>
+                  To top up your vault, deposit the tokens to the below address.
+                </h2>
+                <div className="deposit-address-chip">{"0x123456789"}</div>
+                <h2>
+                  You can proceed with the trades once the deposit is complete
+                </h2>
               </div>
-              <div className="vault-address">
-                <div className="address">0x123...456</div>
-                <div className="brand">at AlgoCombo</div>
+            ) : (
+              <div className="vault-card-ui">
+                <div className="vault-balance">
+                  <div className="balance-label">Balance:</div>
+                  <div className="balance-amount">$165.00</div>
+                </div>
+                <div className="vault-address">
+                  <div className="address">0x123...456</div>
+                  <div className="brand">at AlgoCombo</div>
+                </div>
               </div>
+            )}
+            <div className="w-full flex justify-center items-center">
+              <button
+                className="deposit-btn"
+                onClick={() => {
+                  depositOpen ? handleClose() : setDepositOpen(true);
+                }}
+              >
+                {depositOpen ? "Done" : "Deposit"}
+              </button>
             </div>
           </div>
         </div>
