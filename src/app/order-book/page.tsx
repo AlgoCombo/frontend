@@ -28,8 +28,8 @@ export default function OrderBook() {
           _id: 1,
           earliestTrade: {
             _id: "657448744c993d038ff91d74",
-            current_coin: "usdt",
-            coin_pairs: ["usdt", "usdc"],
+            current_coin: "wmatic",
+            coin_pairs: ["wmatic", "usdt"],
             amount: 10,
             isActive: true,
             creator: {
@@ -49,8 +49,8 @@ export default function OrderBook() {
           latestTrade: {
             _id: "6574490fa92f39b6d041a839",
             trade_id: 1,
-            current_coin: "usdt",
-            coin_pairs: ["usdt", "usdc"],
+            current_coin: "wmatic",
+            coin_pairs: ["wmatic", "usdt"],
             amount: 10,
             isActive: true,
             creator: {
