@@ -4,8 +4,8 @@ export default [
     token1: "USDC",
   },
   {
-    token0: "DAI",
-    token1: "USDC",
+    token0: "WMATIC",
+    token1: "USDT",
   },
   {
     token0: "USDT",
