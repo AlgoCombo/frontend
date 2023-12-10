@@ -4,7 +4,7 @@ export default [
     token1: "USDC",
   },
   {
-    token0: "WMATIC",
+    token0: "MATIC",
     token1: "USDT",
   },
   {
