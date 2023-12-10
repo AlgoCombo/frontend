@@ -42,6 +42,7 @@ function DragAdder() {
   const tokenNameMap: any = {
     USDT: "tether",
     USDC: "usd-coin",
+    WMATIC: "matic-network",
   };
 
   const executeTrade = async (sign: string) => {
