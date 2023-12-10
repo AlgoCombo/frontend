@@ -15,6 +15,7 @@ function AddTokenPair() {
 
   const tokenList = useTradeStore((s: any) => s.tokenList);
   const setTokens = useTradeStore((s: any) => s.setTokens);
+  const setTvParam = useTradeStore((s: any) => s.setTvParam);
 
   const { theme } = useTheme();
 
@@ -79,6 +80,7 @@ function AddTokenPair() {
                   setSelectedPair(token);
                   setCurrentToken(token);
                   setTokens([...tokenList, token.token0, token.token1]);
+                  setTvParam(`${token.token0}/${token.token1}`);
                   modal1.current.close();
                 }}
               >

@@ -1,4 +1,5 @@
 "use client";
+import { useTradeStore } from "@/states/trade.state";
 import { useTheme } from "next-themes";
 import React, { useEffect, useRef } from "react";
 
@@ -13,9 +14,13 @@ export default function TradingViewWidget({
 }: TradingViewWidgetProps): any {
   const onLoadScriptRef = useRef<(() => void) | null>();
 
+  const tvParam = useTradeStore((s: any) => s.tvParam);
+
   const { theme } = useTheme();
 
-  useEffect(() => {}, [theme]);
+  useEffect(() => {
+    console.log(tvParam);
+  }, [tvParam]);
 
   useEffect(() => {
     onLoadScriptRef.current = createWidget;
@@ -47,9 +52,9 @@ export default function TradingViewWidget({
       ) {
         new window.TradingView.widget({
           autosize: true,
-          symbol: `${symbol}`,
+          symbol: `${tvParam}`,
           interval: "D",
-          timezone: "Etc/UTC",
+          timezone: `Etc/UTC`,
           theme: "dark",
           style: "1",
           locale: "en",
@@ -60,7 +65,7 @@ export default function TradingViewWidget({
         });
       }
     }
-  }, [symbol, theme]);
+  }, [tvParam]);
 
   return (
     <div className="tradingview-widget-container h-full w-full">
