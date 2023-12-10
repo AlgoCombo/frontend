@@ -17,7 +17,6 @@ export default function Navbar() {
   const wAddress = useWalletStore((state: any) => state.address);
 
   React.useEffect(() => {
-    handleFetchHotWalletData();
     if (theme === "dark") {
       document.body.classList.add("dark-mode");
     } else {
@@ -25,27 +24,37 @@ export default function Navbar() {
     }
   }, [theme]);
 
+  useEffect(() => {
+    if (wAddress) {
+      handleFetchHotWalletData();
+    }
+  }, []);
+
+  React.useEffect(() => {
+    if (wAddress) {
+      handleFetchHotWalletData();
+    }
+  }, [wAddress]);
+
   const modal2 = useRef<any>(null);
 
   const handleFetchHotWalletData = async () => {
-    const addr = await getAccount();
-    if (!addr) {
-      alert("Please connect your wallet");
+    if (!wAddress) {
       return;
     }
-    console.log("address", addr);
+    console.log("address", wAddress);
     const res = await getHotWalletForUser({
       wallet_address: wAddress,
     });
-    handleFetchWalletBalances();
+    handleFetchWalletBalances(wAddress);
     console.log("res from hot wallet fetch", res);
   };
 
-  const handleFetchWalletBalances = async () => {
+  const handleFetchWalletBalances = async (addr: string) => {
     const chainId = useChainId();
     const res = await getWalletBalances({
       chainId,
-      wallet_address: wAddress,
+      wallet_address: addr,
     });
     console.log("res from 1 inch", res);
   };

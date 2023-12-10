@@ -1,14 +1,11 @@
 "use client";
 import { createWalletClient, custom, http } from "viem";
 import { privateKeyToAccount } from "viem/accounts";
-import { mainnet } from "viem/chains";
-
-export const walletClient = createWalletClient({
-  chain: mainnet,
-  transport: http(),
-});
+import { mainnet, polygon } from "viem/chains";
+import { useWalletClient } from "wagmi";
 
 export async function getAccount() {
-  const [account] = await walletClient.getAddresses();
-  return account;
+  //   const { data: walletClient } = useWalletClient();
+  //   const [account] = await walletClient!.getAddresses();
+  return "";
 }

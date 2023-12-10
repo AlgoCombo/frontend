@@ -4,7 +4,7 @@ import "./index.css";
 import { Web3Button, Web3Modal } from "@web3modal/react";
 import ConnectWallet from "@/components/ConnectWallet";
 import { useTheme } from "next-themes";
-import { getAccount, walletClient } from "@/configs/wallet_config";
+import { getAccount } from "@/configs/wallet_config";
 import { useRouter } from "next/navigation";
 import { useAccount, useWalletClient } from "wagmi";
 import { useWalletStore } from "@/states/wallet.state";

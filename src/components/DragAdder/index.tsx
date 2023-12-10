@@ -5,11 +5,11 @@ import AddTokenPair from "../Blocks/AddTokenPair";
 import AddAlgorithm from "../Blocks/AddAlgorithm";
 import AddExecutionLayer from "../Blocks/AddExecutionLayer";
 import { useRef, useState } from "react";
-import { getAccount, walletClient } from "@/configs/wallet_config";
+import { getAccount } from "@/configs/wallet_config";
 import { useTradeStore } from "@/states/trade.state";
 import ITrade from "@/types/trade.interface";
 import { createTrade } from "@/services/trade.service";
-import { useChainId } from "wagmi";
+import { useChainId, useWalletClient } from "wagmi";
 
 function DragAdder() {
   const amountRef = useRef<HTMLInputElement>(null);
@@ -18,19 +18,20 @@ function DragAdder() {
   const executionLayer = useTradeStore((s: any) => s.executionLayer);
   const algorithm = useTradeStore((s: any) => s.algorithm);
   const [signature, setSignature] = useState<string>("");
+  const { data: walletClient } = useWalletClient();
 
   const chainId = useChainId();
 
   const handleSendSignature = async () => {
-    const account = await getAccount();
-    console.log(account, "ACCOUNT");
+    const [address] = await walletClient!.getAddresses();
+    console.log(address, "ACCOUNT");
 
-    if (!account) return;
+    if (!address) return;
 
     console.log(chainId, "CHAIN ID");
 
-    const signature = await walletClient.signMessage({
-      account,
+    const signature = await walletClient!.signMessage({
+      account: address,
       message: "new trade request",
     });
     setSignature(signature);
