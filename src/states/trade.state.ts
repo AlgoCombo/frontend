@@ -11,6 +11,6 @@ export const useTradeStore = create((set) => ({
   setExecutionLayer: (layer: any) => set({ executionLayer: layer }),
   algorithm: null,
   setAlgorithm: (algorithm: any) => set({ algorithm: algorithm }),
-  tvParam: null,
+  tvParam: "ETH/USDT",
   setTvParam: (tvParam: any) => set({ tvParam }),
 }));

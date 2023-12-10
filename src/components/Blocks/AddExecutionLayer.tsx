@@ -17,10 +17,17 @@ function AddExecutionLayer() {
   const layers = [
     {
       name: "fusionswap",
+      display: "Fusion Swap",
       icon: "cow",
     },
     {
       name: "uniswap",
+      display: "UniSwap",
+      icon: "cow",
+    },
+    {
+      name: "sushiswap",
+      display: "Sushi Swap",
       icon: "cow",
     },
   ];
@@ -33,7 +40,7 @@ function AddExecutionLayer() {
           onClick={() => modal2.current!.showModal()}
         >
           <div className="p-5 rounded-t-xl flex items-center justify-between">
-            <h1>{selected.name}</h1>
+            <h1>{selected.display}</h1>
             <h1 className="tracking-widest text-xs">EXECUTION</h1>
           </div>
         </div>
@@ -66,8 +73,8 @@ function AddExecutionLayer() {
               >
                 <div className="flex items-center space-x-2">
                   {/* <img src={getIconUrl(layer.icon)  } className="w-5 h-5" /> */}
-                  <p className="underline">1</p>
-                  <h1 className="font-bold">{layer.name}</h1>
+                  {/* <p className="underline">1</p> */}
+                  <h1 className="font-bold">{layer.display}</h1>
                 </div>
                 {selected == layer && <CheckIcon className="w-5 h-5" />}
               </div>
