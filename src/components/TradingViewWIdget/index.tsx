@@ -50,7 +50,7 @@ export default function TradingViewWidget({
           symbol: `${symbol}`,
           interval: "D",
           timezone: "Etc/UTC",
-          theme: `${theme === "dark" ? "light" : "dark"}`,
+          theme: "dark",
           style: "1",
           locale: "en",
           toolbar_bg: "#f1f3f6",

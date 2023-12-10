@@ -46,7 +46,7 @@ function DragAdder() {
 
   const executeTrade = async (sign: string) => {
     if (!amountRef.current?.value) return;
-    const account = await getAccount();
+    const [address] = await walletClient!.getAddresses();
     console.log("in execute trade", currentToken, tokenList);
     const trade: ITrade = {
       trade: {
@@ -60,7 +60,7 @@ function DragAdder() {
         chain_id: chainId,
       },
       signature: sign,
-      wallet_address: account,
+      wallet_address: address,
       message: "create trade request",
     };
 

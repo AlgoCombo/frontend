@@ -11,9 +11,16 @@ export default function OrderBook() {
   const [orderBook, setOrderBook] = useState<IOrder[]>([]);
   const { data: walletClient } = useWalletClient();
 
-  useEffect(() => {}, [orderBook]);
+  useEffect(() => {
+    if (!walletClient) return;
+    const interval = setInterval(() => {
+      handleFetchOrderBook();
+    }, 10000);
+    return () => clearInterval(interval);
+  }, [orderBook, walletClient]);
 
   useEffect(() => {
+    if (!walletClient) return;
     handleFetchOrderBook();
     // setOrderBook([
     //   {
