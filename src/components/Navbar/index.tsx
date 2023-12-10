@@ -3,8 +3,11 @@ import "./index.css";
 import ConnectWallet from "../ConnectWallet";
 import { ThemeSwitcher } from "../ThemeSwitcher";
 import { useTheme } from "next-themes";
-import { getHotWalletForUser } from "@/services/wallet.service";
-import { useAccount, useWalletClient } from "wagmi";
+import {
+  getHotWalletForUser,
+  getWalletBalances,
+} from "@/services/wallet.service";
+import { useAccount, useChainId, useWalletClient } from "wagmi";
 import { useWalletStore } from "@/states/wallet.state";
 import { getAccount } from "@/configs/wallet_config";
 
@@ -34,7 +37,17 @@ export default function Navbar() {
     const res = await getHotWalletForUser({
       wallet_address: wAddress,
     });
+    handleFetchWalletBalances();
     console.log("res from hot wallet fetch", res);
+  };
+
+  const handleFetchWalletBalances = async () => {
+    const chainId = useChainId();
+    const res = await getWalletBalances({
+      chainId,
+      wallet_address: wAddress,
+    });
+    console.log("res from 1 inch", res);
   };
 
   return (

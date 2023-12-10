@@ -8,10 +8,20 @@ export async function getHotWalletForUser(data: any) {
 }
 
 export async function getWalletBalances(data: any) {
-  const res = await fetch(
-    `https://api.1inch.dev/balance/v1.2/${data.chainId}/balances/${data.address}`
-  );
-  return await res.json();
+  const url = `https://api.1inch.dev/balance/v1.2/${data.chainId}/balances/${data.walletAddress}`;
+
+  const config = {
+    headers: {
+      Authorization: "Bearer llhqcEMyp7djpVMvngClIV9c9HlAXXZy",
+    },
+    params: {},
+  };
+  try {
+    const response = await axios.get(url, config);
+    console.log(response.data, "response.data from getWalletBalances");
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 export async function getTokenAddresses() {}
