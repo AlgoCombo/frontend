@@ -62,9 +62,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="dark">
+          {/* <Navbar /> */}
           <WagmiConfig config={wagmiConfig}>{children}</WagmiConfig>
           {/* <ConnectWallet /> */}
-          <Navbar />
           <Web3Modal
             projectId={projectId}
             ethereumClient={ethereumClient}

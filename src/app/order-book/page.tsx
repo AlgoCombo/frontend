@@ -5,9 +5,12 @@ import IOrder from "@/types/order.interface";
 import { getIconUrl } from "@/utils";
 import { getActiveTrades } from "@/services/trade.service";
 import { getAccount } from "@/configs/wallet_config";
+import { useAccount } from "wagmi";
 
 export default function OrderBook() {
   const [orderBook, setOrderBook] = useState<IOrder[]>([]);
+
+  const { address } = useAccount();
 
   useEffect(() => {}, [orderBook]);
 
@@ -57,7 +60,7 @@ export default function OrderBook() {
     //     },
     //   },
     // ]);
-  }, []);
+  }, [address]);
 
   const handleFetchOrderBook = async () => {
     const account = await getAccount();

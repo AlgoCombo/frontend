@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from "react";
-import "./index.css";
 import ConnectWallet from "../ConnectWallet";
 import { ThemeSwitcher } from "../ThemeSwitcher";
 import { useTheme } from "next-themes";
@@ -10,6 +9,7 @@ import {
 import { useAccount, useChainId, useWalletClient } from "wagmi";
 import { useWalletStore } from "@/states/wallet.state";
 import { getAccount } from "@/configs/wallet_config";
+import "./index.css";
 
 export default function Navbar() {
   const { theme } = useTheme();

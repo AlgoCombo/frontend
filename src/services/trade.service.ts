@@ -8,6 +8,6 @@ export async function createTrade(data: ITrade) {
 export async function getActiveTrades(data: any) {
   return await axios.post("/trades/active-trades", {
     method: "POST",
-    body: JSON.stringify(data),
+    body: data,
   });
 }
